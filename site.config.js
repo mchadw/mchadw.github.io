@@ -3,7 +3,7 @@
  * Layout and styling live in index.html, css/styles.css, and js/site.js.
  */
 window.SITE_CONFIG = {
-  name: "Michael Chadwick",
+  name: "M Chadwick",
   title: "Computer Engineering, Honors Student @ Irvine Valley College",
   bio:
     "I am a freshman studying CE at IVC and like to make projects related to math, machine learning, computer engineering, and the intersection between sports access/performance and technology.",
