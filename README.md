@@ -1,102 +1,88 @@
-# GitHub Pages Portfolio Template
+# Michael Chadwick — GitHub Pages portfolio
 
-A minimal, config-driven personal portfolio you can publish for free on [GitHub Pages](https://pages.github.com/). Edit one JavaScript file for your bio, skills, projects, and links—no build step required.
+A one-page portfolio. Change the words in [`site.config.js`](site.config.js), push to `main`, and [https://mchadw.github.io/](https://mchadw.github.io/) updates. There is no build step.
 
-## Quick start (publish on GitHub)
+## What you edit
 
-### 1. Create the repository
+Open **`site.config.js`** and change the values. Everything visitors see comes from that file.
 
-On [GitHub](https://github.com/new), create a **public** repository named exactly:
+| Field | What it controls |
+| --- | --- |
+| `name` | Your name (page heading and browser title) |
+| `title` | Short line under your name. Use `""` to hide it. |
+| `bio` | The paragraph under your name |
+| `avatar` | Profile image URL. Use `""` to hide it. |
+| `skills` | List of skills |
+| `projects` | Past projects. Each one has `title`, `description`, and `link`. |
+| `links` | Buttons for email, GitHub, LinkedIn, and anything else |
+| `footer` | Line at the bottom of the page |
 
-```text
-{your-github-username}.github.io
+Email uses a `mailto:` link:
+
+```javascript
+{ label: "Email", href: "mailto:you@example.com" },
 ```
 
-Example: if your username is `octocat`, the repo must be `octocat.github.io`.
+Replace `you@example.com` and the LinkedIn URL before you rely on those buttons. GitHub already points at [https://github.com/mchadw](https://github.com/mchadw).
 
-### 2. Push this template
+To add a project, copy an existing block inside `projects` and fill it in. To remove one, delete its block (keep the commas valid).
 
-If you cloned an empty repo, copy these files into it and push. From your machine:
+## Publish the page
+
+This repository is named `mchadw.github.io`, so GitHub Pages serves it at the root of your username:
+
+```text
+https://mchadw.github.io/
+```
+
+Pages is set to deploy the **`main`** branch from the **repository root** (`/`).
+
+### Update the live site
+
+1. Edit `site.config.js`.
+2. Commit the change.
+3. Push to `main`:
+
+   ```bash
+   git add site.config.js
+   git commit -m "Update portfolio content"
+   git push origin main
+   ```
+
+4. Wait one to two minutes, then open [https://mchadw.github.io/](https://mchadw.github.io/) and refresh. GitHub caches the page for a few minutes, so a hard refresh (Ctrl+Shift+R, or Cmd+Shift+R on a Mac) helps.
+
+### Turn Pages on (only if the site is not already live)
+
+1. Open [the repository on GitHub](https://github.com/mchadw/mchadw.github.io).
+2. Go to **Settings** → **Pages**.
+3. Under **Build and deployment**:
+   - **Source:** Deploy from a branch
+   - **Branch:** `main`
+   - **Folder:** `/ (root)`
+4. Click **Save**.
+
+The site files stay in the repository root (`index.html` next to this README). Do not move them into a `docs/` folder unless you also change the Pages folder setting to `/docs`.
+
+The empty [`.nojekyll`](.nojekyll) file tells GitHub Pages to publish the files as-is and skip Jekyll.
+
+## Preview on your computer
+
+From the repository root:
 
 ```bash
-git init
-git add .
-git commit -m "Add portfolio template"
-git branch -M main
-git remote add origin https://github.com/{your-github-username}/{your-github-username}.github.io.git
-git push -u origin main
+python3 -m http.server 8765
 ```
 
-Replace `{your-github-username}` with your GitHub username.
+Open [http://localhost:8765](http://localhost:8765). Edit `site.config.js`, save, and refresh the browser.
 
-### 3. Enable GitHub Pages
-
-1. Open your repo on GitHub → **Settings** → **Pages** (left sidebar).
-2. Under **Build and deployment**:
-   - **Source**: Deploy from a branch
-   - **Branch**: `main` (or your default branch)
-   - **Folder**: **`/ (root)`** ← this template is designed for the repository root, not `docs/`
-3. Click **Save**.
-
-After a minute or two, your site is live at:
-
-```text
-https://{your-github-username}.github.io/
-```
-
-### 4. Customize content
-
-Edit **[`site.config.js`](site.config.js)** at the repo root:
-
-| Field | What to change |
-| --- | --- |
-| `name`, `title`, `bio` | Header and browser title |
-| `avatar` | Optional image URL (leave `""` to hide) |
-| `skills` | Array of skill strings |
-| `projects` | Array of `{ title, description, link }` |
-| `links` | Quick links (email, GitHub, LinkedIn, etc.) |
-| `footer` | Footer line |
-
-Commit and push; GitHub Pages will update automatically.
-
-## Project structure
+## Files
 
 ```text
 .
-├── index.html          # Page shell (sections only; content comes from config)
-├── site.config.js      # ← Edit your content here
-├── css/styles.css      # Visual styling
-├── js/site.js          # Renders config into the page
-├── .nojekyll           # Tells GitHub Pages not to run Jekyll
+├── index.html       # Page structure
+├── site.config.js   # Your content — edit this
+├── css/styles.css   # Styling
+├── js/site.js       # Copies config into the page
+├── .nojekyll        # Skip Jekyll on GitHub Pages
 └── README.md
 ```
-
-**Deployment folder:** **root** (`/`). Do not move the site into `docs/` unless you change Pages settings to use the `/docs` folder instead.
-
-## Local preview (optional)
-
-Any static file server works. Examples:
-
-```bash
-# Python 3
-python3 -m http.server 8765
-
-# Node (npx, no install)
-npx --yes serve -p 8765
-```
-
-Open `http://localhost:8765` in your browser. Edit `site.config.js`, refresh to see changes.
-
-## Using a project repo instead of `username.github.io`
-
-You can host this template on any repo (e.g. `my-portfolio`) and enable Pages from the root of `main`. The URL will be:
-
-```text
-https://{username}.github.io/{repo-name}/
-```
-
-For a site at `https://{username}.github.io/` with no path prefix, use the special `{username}.github.io` repository name.
-
-## License
-
-Use and modify freely for your own portfolio.
