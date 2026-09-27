@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
   title: "",
 
   // A few sentences about you.
-  bio: "Personal site for Michael Chadwick. Replace this with a short bio.",
+  bio: "Personal site for Michael Chadwick.",
 
   // Full image URL, or "" to hide. Example: "https://avatars.githubusercontent.com/u/211242766"
   avatar: "",
