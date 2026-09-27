@@ -10,9 +10,8 @@ window.SITE_CONFIG = {
   avatar: "", // Optional: URL to a profile image (leave empty to hide)
   skills: [
     "Python",
-    "C/C++",
+    "C",
     "Java",
-    "Verilog",
     "Git",
     "Pandas",
     "NumPy",
@@ -20,21 +19,21 @@ window.SITE_CONFIG = {
   ],
   projects: [
     {
-      title: "Task Flow",
+      title: "[empty]",
       description:
-        "A lightweight kanban board with offline support and keyboard shortcuts.",
+        "[empty]",
       link: "https://github.com/example/task-flow",
     },
     {
-      title: "Color Contrast Checker",
+      title: "[empty]",
       description:
-        "Browser extension that flags WCAG contrast issues on any page.",
+        "[empty]",
       link: "https://github.com/example/contrast-checker",
     },
     {
-      title: "API Starter Kit",
+      title: "[empty]",
       description:
-        "Opinionated FastAPI template with auth, tests, and Docker compose.",
+        "[empty]",
       link: "https://github.com/example/api-starter",
     },
   ],
