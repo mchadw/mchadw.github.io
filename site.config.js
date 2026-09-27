@@ -3,18 +3,19 @@
  * Layout and styling live in index.html, css/styles.css, and js/site.js.
  */
 window.SITE_CONFIG = {
-  name: "Jane Developer",
-  title: "Software Engineer",
+  name: "Michael Chadwick",
+  title: "Computer Engineering, Honors Student @ Irvine Valley College",
   bio:
-    "I build thoughtful web experiences and open-source tools. Currently focused on developer productivity and accessible interfaces.",
+    "I am a freshman studying CE at IVC and like to make projects related to math, machine learning, computer engineering, and the intersection between sports access/performance and technology.",
   avatar: "", // Optional: URL to a profile image (leave empty to hide)
   skills: [
-    "JavaScript / TypeScript",
-    "React & Node.js",
-    "HTML & CSS",
-    "Git & GitHub Actions",
-    "REST APIs",
-    "Technical writing",
+    "Python",
+    "Java",
+    "Verilog",
+    "Git",
+    "Pandas",
+    "NumPy",
+    "matplotlib"
   ],
   projects: [
     {
