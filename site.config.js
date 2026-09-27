@@ -10,6 +10,7 @@ window.SITE_CONFIG = {
   avatar: "", // Optional: URL to a profile image (leave empty to hide)
   skills: [
     "Python",
+    "C/C++",
     "Java",
     "Verilog",
     "Git",
@@ -38,14 +39,13 @@ window.SITE_CONFIG = {
     },
   ],
   links: [
-    { label: "Email", href: "mailto:hello@example.com", icon: "email" },
-    { label: "GitHub", href: "https://github.com/example", icon: "github" },
+    { label: "Email", href: "mchadwick5@ivc.edu", icon: "email" },
+    { label: "GitHub", href: "https://github.com/mchadw", icon: "github" },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/example",
+      href: "https://www.linkedin.com/in/michael-chadwick-4b29842b2/",
       icon: "linkedin",
     },
     // Add more: { label: "Mastodon", href: "https://...", icon: "link" },
   ],
-  footer: "© 2026 Jane Developer. Built with GitHub Pages.",
 };
