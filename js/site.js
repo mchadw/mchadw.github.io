@@ -5,24 +5,45 @@
     return;
   }
 
-  function setText(id, text) {
+  function text(value) {
+    return value == null ? "" : String(value).trim();
+  }
+
+  function setText(id, value) {
     const el = document.getElementById(id);
-    if (el && text != null) el.textContent = text;
+    const content = text(value);
+    if (!el) return;
+    el.textContent = content;
+    el.hidden = content.length === 0;
+  }
+
+  function isHttp(href) {
+    return href.startsWith("http://") || href.startsWith("https://");
   }
 
   function renderHero() {
-    document.title = config.name + (config.title ? " — " + config.title : "");
-    setText("site-name", config.name);
-    setText("site-role", config.title);
+    const name = text(config.name) || "Portfolio";
+    const title = text(config.title);
+    document.title = title ? name + " — " + title : name;
+
+    const description = document.querySelector('meta[name="description"]');
+    if (description) {
+      description.setAttribute("content", text(config.bio) || name);
+    }
+
+    setText("site-name", name);
+    setText("site-role", title);
     setText("site-bio", config.bio);
 
     const avatar = document.getElementById("site-avatar");
+    const avatarUrl = text(config.avatar);
     if (avatar) {
-      if (config.avatar) {
-        avatar.src = config.avatar;
-        avatar.alt = config.name;
+      if (avatarUrl) {
+        avatar.src = avatarUrl;
+        avatar.alt = name;
         avatar.hidden = false;
       } else {
+        avatar.removeAttribute("src");
         avatar.hidden = true;
       }
     }
@@ -30,60 +51,95 @@
 
   function renderQuickLinks() {
     const nav = document.getElementById("quick-links");
-    if (!nav || !Array.isArray(config.links)) return;
+    if (!nav) return;
     nav.replaceChildren();
-    config.links.forEach(function (item) {
+
+    const links = Array.isArray(config.links) ? config.links : [];
+    links.forEach(function (item) {
+      const href = text(item && item.href);
+      const label = text(item && item.label);
+      if (!href || !label) return;
+
       const a = document.createElement("a");
-      a.href = item.href;
-      a.textContent = item.label;
-      if (item.href.startsWith("http")) {
+      a.href = href;
+      a.textContent = label;
+      if (isHttp(href)) {
         a.target = "_blank";
         a.rel = "noopener noreferrer";
       }
       nav.appendChild(a);
     });
+
+    nav.hidden = nav.childElementCount === 0;
   }
 
   function renderSkills() {
     const list = document.getElementById("skills-list");
-    if (!list || !Array.isArray(config.skills)) return;
+    const section = document.querySelector(".skills");
+    if (!list) return;
     list.replaceChildren();
-    config.skills.forEach(function (skill) {
+
+    const skills = Array.isArray(config.skills) ? config.skills : [];
+    skills.forEach(function (skill) {
+      const label = text(skill);
+      if (!label) return;
       const li = document.createElement("li");
-      li.textContent = skill;
+      li.textContent = label;
       list.appendChild(li);
     });
+
+    if (section) section.hidden = list.childElementCount === 0;
   }
 
   function renderProjects() {
     const container = document.getElementById("projects-list");
-    if (!container || !Array.isArray(config.projects)) return;
+    const section = document.querySelector(".projects-section");
+    if (!container) return;
     container.replaceChildren();
-    config.projects.forEach(function (project) {
+
+    const projects = Array.isArray(config.projects) ? config.projects : [];
+    projects.forEach(function (project) {
+      const title = text(project && project.title);
+      if (!title) return;
+
       const article = document.createElement("article");
       article.className = "project-card";
 
       const h3 = document.createElement("h3");
-      const link = document.createElement("a");
-      link.href = project.link;
-      link.textContent = project.title;
-      if (project.link.startsWith("http")) {
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
+      const href = text(project.link);
+      if (href) {
+        const link = document.createElement("a");
+        link.href = href;
+        link.textContent = title;
+        if (isHttp(href)) {
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+        h3.appendChild(link);
+      } else {
+        h3.textContent = title;
       }
-      h3.appendChild(link);
-
-      const p = document.createElement("p");
-      p.textContent = project.description;
 
       article.appendChild(h3);
-      article.appendChild(p);
+
+      const description = text(project.description);
+      if (description) {
+        const p = document.createElement("p");
+        p.textContent = description;
+        article.appendChild(p);
+      }
+
       container.appendChild(article);
     });
+
+    if (section) section.hidden = container.childElementCount === 0;
   }
 
   function renderFooter() {
-    setText("site-footer", config.footer || "");
+    setText("site-footer", config.footer);
+    const footer = document.querySelector(".site-footer");
+    const line = document.getElementById("site-footer");
+    if (footer && line) footer.hidden = line.hidden;
   }
 
   renderHero();
