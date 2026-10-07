@@ -10,6 +10,57 @@
     if (el && text != null) el.textContent = text;
   }
 
+  function isExternal(href) {
+    return href.startsWith("http");
+  }
+
+  function renderWorkingOn() {
+    const section = document.getElementById("working-on");
+    const body = document.getElementById("working-on-body");
+    if (!section || !body) return;
+
+    const item = config.workingOn || {};
+    const title = String(item.title || "").trim();
+    const description = String(item.description || "").trim();
+    const href = String(item.link || "").trim();
+
+    body.replaceChildren();
+    if (!title && !description) {
+      section.hidden = true;
+      return;
+    }
+
+    section.hidden = false;
+
+    if (title) {
+      const heading = document.createElement("h2");
+      heading.id = "working-on-title";
+      heading.textContent = title;
+      body.appendChild(heading);
+      section.setAttribute("aria-labelledby", "working-on-title");
+    } else {
+      section.setAttribute("aria-labelledby", "working-on-label");
+    }
+
+    if (description) {
+      const p = document.createElement("p");
+      p.textContent = description;
+      body.appendChild(p);
+    }
+
+    if (href) {
+      const link = document.createElement("a");
+      link.className = "working-on-link";
+      link.href = href;
+      link.textContent = item.linkLabel || "View project";
+      if (isExternal(href)) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+      body.appendChild(link);
+    }
+  }
+
   function renderHero() {
     document.title = config.name + (config.title ? " — " + config.title : "");
     setText("site-name", config.name);
@@ -36,7 +87,7 @@
       const a = document.createElement("a");
       a.href = item.href;
       a.textContent = item.label;
-      if (item.href.startsWith("http")) {
+      if (isExternal(item.href)) {
         a.target = "_blank";
         a.rel = "noopener noreferrer";
       }
@@ -67,7 +118,7 @@
       const link = document.createElement("a");
       link.href = project.link;
       link.textContent = project.title;
-      if (project.link.startsWith("http")) {
+      if (isExternal(project.link)) {
         link.target = "_blank";
         link.rel = "noopener noreferrer";
       }
@@ -86,6 +137,7 @@
     setText("site-footer", config.footer || "");
   }
 
+  renderWorkingOn();
   renderHero();
   renderQuickLinks();
   renderSkills();
