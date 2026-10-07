@@ -6,7 +6,7 @@ window.SITE_CONFIG = {
   name: "M Chadwick",
   title: "Computer Engineering, Honors Student @ Irvine Valley College",
   bio:
-    "I am a freshman studying CE at IVC and like to make projects related to math, machine learning, computer engineering, and the intersection between sports access/performance and technology.",
+    "I am a freshman studying CE at IVC and like to make projects related to math, machine learning, and the intersection between sports access/performance and hardware.",
   avatar: "", // Optional: URL to a profile image (leave empty to hide)
   skills: [
     "Python",
