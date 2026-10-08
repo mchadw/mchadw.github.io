@@ -53,6 +53,58 @@ a:hover {
   padding: 2.5rem 1.25rem 4rem;
 }
 
+.working-on {
+  margin-bottom: 2.5rem;
+  padding: 1rem 1.15rem 1.15rem;
+  background:
+    linear-gradient(180deg, rgba(88, 166, 255, 0.1), transparent 72%),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.working-on .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.working-on .eyebrow::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.22);
+}
+
+.working-on h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--text);
+}
+
+.working-on p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.working-on .working-on-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 header.hero {
   margin-bottom: 2.5rem;
 }
