@@ -12,8 +12,8 @@ window.SITE_CONFIG = {
     "I am a freshman studying CE at IVC and like to make projects related to math, machine learning, and the intersection between sports access/performance and hardware.",
   avatar: "", // Optional: URL to a profile image (leave empty to hide)
   workingOn: {
-    title: "Project name",
-    description: "What it is, what you're figuring out, and what's next.",
+    title: "Project Swing",
+    description: "Generating predictability scores for tennis players using Markov chains",
     link: "", // Optional: URL for the project
   },
   skills: [
